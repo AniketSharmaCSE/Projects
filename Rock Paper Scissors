@@ -1,0 +1,51 @@
+import random
+
+print('Welcome to Rock, Paper, Scissors!')
+
+while True:
+    print("\nEnter your choice: \n1 - Rock \n2 - Paper \n3 - Scissors \n")
+
+    choice1 = int(input("Enter your choice: "))
+
+    while choice1 not in [1, 2, 3]:
+        choice1 = int(input('Enter a valid choice: '))
+
+    if choice1 == 1:
+        choice2 = 'Rock'
+    elif choice1 == 2:
+        choice2 = 'Paper'
+    else:
+        choice2 = 'Scissors'
+
+    print('You chose:', choice2)
+    print("Now it's the computer's turn....")
+
+    computer_choice = random.randint(1, 3)
+
+    while computer_choice == choice1:
+        computer_choice = random.randint(1, 3)
+
+    if computer_choice == 1:
+        computer_choice_name = 'Rock'
+    elif computer_choice == 2:
+        computer_choice_name = 'Paper'
+    else:
+        computer_choice_name = 'Scissors'
+
+    print("Computer chose:", computer_choice_name)
+    print(choice2, 'vs', computer_choice_name)
+
+    if choice1 == computer_choice:
+        print('It\'s a tie!')
+    elif (choice1 == 1 and computer_choice == 3) or \
+         (choice1 == 2 and computer_choice == 1) or \
+         (choice1 == 3 and computer_choice == 2):
+        print('Congratulations! You win!')
+    else:
+        print('Computer wins!')
+
+    play_again = input("Do you want to play again? (Y/N): ").lower()
+    if play_again != 'y':
+        break
+
+print("Thanks for playing Rock, Paper, Scissors!")
